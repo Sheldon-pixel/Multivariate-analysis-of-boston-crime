@@ -1,0 +1,38 @@
+---
+title: "MVA CrimeData"
+author: "Sheldon Sequeira"
+date: "1/31/2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+boston <- read.csv("C:/Users/HP/Desktop/crime.csv")
+```
+
+```{r}
+summary(boston)
+```
+
+```{r}
+str(boston)
+```
+```{r}
+library(MASS)
+cor.test(boston$Lat,boston$HOUR)
+cor.test(boston$YEAR, boston$HOUR)
+```
+
+
+```{r}
+model  <- lm(boston$HOUR ~ boston$YEAR + boston$MONTH, data = boston)
+summary(model)
+```
+
+```{r}
+plot(model)
+```
+## There is very low correlation between the crime committed in hours and the two intependent variables crime year and crime months.There is significant levels of difference between the hour(response) and the independent variables month and year. 
